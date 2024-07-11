@@ -2,6 +2,7 @@
 #include "Graphics/GraphicService.h"
 #include "Event/EventService.h"
 #include "Level/LevelService.h"
+#include "Player/PlayerService.h"
 #include "UI/UIService.h"
 #include "Sound/SoundService.h"
 #include "Time/TimeService.h"
@@ -16,6 +17,7 @@ namespace Global
         Sound::SoundService* sound_service;
         UI::UIService* ui_service;
         Time::TimeService* time_service;
+        Player::PlayerService* player_service;
         Level::LevelService* level_service;
 
         ServiceLocator();
@@ -36,6 +38,7 @@ namespace Global
         Sound::SoundService* getSoundService();
         UI::UIService* getUIService();
         Time::TimeService* getTimeService();
+        Player::PlayerService* getPlayerService();
         Level::LevelService* getLevelService();
         void deleteServiceLocator();
     };
