@@ -2,9 +2,11 @@
 
 namespace Global
 {
-	const sf::String Config::outscal_logo_texture_path = "assets/textures/outscal_logo.png";
+	const sf::String Config::outscal_logo_texture_path = "assets/textures/Designer.png";
 
 	const sf::String Config::background_texture_path = "assets/textures/snake_bg.png";
+
+	const sf::String Config::snake_text_path = "assets/textures/snake-logo-text.png";
 
 	const sf::String Config::obstacle_texture_path = "assets/textures/obstacle.png";
 

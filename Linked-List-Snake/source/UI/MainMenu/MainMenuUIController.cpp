@@ -36,6 +36,7 @@ namespace UI
         void MainMenuUIController::createImage()
         {
             background_image = new ImageView();
+            snake_text = new ImageView();
         }
 
         void MainMenuUIController::createButtons()
@@ -51,6 +52,8 @@ namespace UI
 
             background_image->initialize(Config::background_texture_path, game_window->getSize().x, game_window->getSize().y, sf::Vector2f(0, 0));
             background_image->setImageAlpha(background_alpha);
+
+            snake_text->initialize(Config::snake_text_path, 700, 200, sf::Vector2f(610.f,250.f));
         }
 
         void MainMenuUIController::initializeButtons()
@@ -91,6 +94,7 @@ namespace UI
         void MainMenuUIController::update()
         {
             background_image->update();
+            snake_text->update();
             play_button->update();
             instructions_button->update();
             quit_button->update();
@@ -99,6 +103,7 @@ namespace UI
         void MainMenuUIController::render()
         {
             background_image->render();
+            snake_text->render();
             play_button->render();
             instructions_button->render();
             quit_button->render();
@@ -107,6 +112,7 @@ namespace UI
         void MainMenuUIController::show()
         {
             background_image->show();
+            snake_text->show();
             play_button->show();
             instructions_button->show();
             quit_button->show();
@@ -115,6 +121,7 @@ namespace UI
         void MainMenuUIController::destroy()
         {
             delete (play_button);
+            delete(snake_text);
             delete (instructions_button);
             delete (quit_button);
             delete (background_image);

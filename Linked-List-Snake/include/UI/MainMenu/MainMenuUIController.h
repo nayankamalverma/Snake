@@ -22,6 +22,7 @@ namespace UI
 			const float background_alpha = 85.f;
 
 			UIElement::ImageView* background_image;
+			UIElement::ImageView* snake_text;
 
 			UIElement::ButtonView* play_button;
 			UIElement::ButtonView* instructions_button;
