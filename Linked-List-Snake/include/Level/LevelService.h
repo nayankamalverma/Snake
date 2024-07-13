@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "Level/LevelNumber.h"
+#include "LevelNumber.h"
 
 namespace Level
 {
@@ -23,8 +23,8 @@ namespace Level
         void update();
         void render();
 
+        void createLevel(LevelNumber level_to_load);
         float getCellWidth();
         float getCellHeight();
-        void createLevel(LevelNumber level_to_load);
     };
 }

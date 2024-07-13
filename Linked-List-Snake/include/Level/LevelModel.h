@@ -7,7 +7,6 @@ namespace Level
 {
     class LevelModel
     {
-    private:
         std::vector<LevelData> level_configurations;
 
         float cell_width;
@@ -20,7 +19,7 @@ namespace Level
         LevelModel();
         ~LevelModel();
 
-        void initialize(float width, float height);
+        void initialize(int width, int height);
 
         float getCellWidth();
         float getCellHeight();

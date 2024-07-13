@@ -1,8 +1,10 @@
 ﻿#include "Level/LevelController.h"
+#include "Level/LevelModel.h"
 #include "Level/LevelView.h"
 
 namespace Level
 {
+
 	LevelController::LevelController()
 	{
 		level_model = new LevelModel();
@@ -41,7 +43,4 @@ namespace Level
 		return level_model->getCellHeight();
 	}
 
-
-
-	
 }

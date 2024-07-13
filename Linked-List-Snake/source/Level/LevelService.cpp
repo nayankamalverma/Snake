@@ -1,6 +1,7 @@
 #include "Level/LevelService.h"
 #include "Level/LevelController.h"
 #include "Global/ServiceLocator.h"
+#include "Level/LevelModel.h"
 
 namespace Level
 {
@@ -22,11 +23,6 @@ namespace Level
 	{
 		level_controller = new LevelController();
 	}
-	void LevelService::spawnPlayer()
-	{
-		ServiceLocator::getInstance()->getPlayerService()->spawnPlayer();
-	}
-
 
 	void LevelService::initialize()
 	{
@@ -42,18 +38,26 @@ namespace Level
 	{
 		level_controller->render();
 	}
+
+	void LevelService::createLevel(LevelNumber level_to_load)
+	{
+		current_level = level_to_load;
+		spawnPlayer();
+	}
+
 	float LevelService::getCellWidth()
 	{
 		return level_controller->getCellWidth();
 	}
+
 	float LevelService::getCellHeight()
 	{
 		return level_controller->getCellHeight();
 	}
 
-	void LevelService::createLevel(LevelNumber level_to_load)
+	void LevelService::spawnPlayer()
 	{
-		current_level = level_to_load;
+		ServiceLocator::getInstance()->getPlayerService()->spawnPlayer();
 	}
 
 	void LevelService::destroy()
