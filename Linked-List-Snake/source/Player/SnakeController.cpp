@@ -77,22 +77,22 @@ namespace Player
 
 		EventService* event_service = ServiceLocator::getInstance()->getEventService();
 
-		if (event_service->pressedUpArrowKey() && current_snake_direction != Direction::DOWN)
+		if ((event_service->pressedUpArrowKey() || event_service->pressedWKey()) &&  current_snake_direction != Direction::DOWN)
 		{
 			current_snake_direction = Direction::UP;
 			current_input_state = InputState::PROCESSING;
 		}
-		else if (event_service->pressedDownArrowKey() && current_snake_direction != Direction::UP)
+		else if ((event_service->pressedDownArrowKey() || event_service->pressedSKey())&& current_snake_direction != Direction::UP)
 		{
 			current_snake_direction = Direction::DOWN;
 			current_input_state = InputState::PROCESSING;
 		}
-		else if (event_service->pressedLeftArrowKey() && current_snake_direction != Direction::RIGHT)
+		else if ((event_service->pressedLeftArrowKey() || event_service->pressedAKey()) && current_snake_direction != Direction::RIGHT)
 		{
 			current_snake_direction = Direction::LEFT;
 			current_input_state = InputState::PROCESSING;
 		}
-		else if (event_service->pressedRightArrowKey() && current_snake_direction != Direction::LEFT)
+		else if ((event_service->pressedRightArrowKey() || event_service->pressedDKey()) && current_snake_direction != Direction::LEFT)
 		{
 			current_snake_direction = Direction::RIGHT;
 			current_input_state = InputState::PROCESSING;
