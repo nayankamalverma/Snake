@@ -55,6 +55,7 @@ namespace LinkedList
 		}
 	}
 
+	//collision
 	bool SingleLinkedList::processNodeCollision()
 	{
 		if (head_node == nullptr) return false;
