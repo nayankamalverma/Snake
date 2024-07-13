@@ -57,7 +57,10 @@ namespace Player
 			updateSnakeDirection();
 			processSnakeCollision();
 			if (current_snake_state != SnakeState::DEAD)
+			{
 				moveSnake();
+				current_input_state = InputState::WAITING;
+			}
 		}
 	}
 
@@ -69,23 +72,30 @@ namespace Player
 
 	void SnakeController::processPlayerInput()
 	{
+		if (current_input_state == InputState::PROCESSING)
+			return;
+
 		EventService* event_service = ServiceLocator::getInstance()->getEventService();
 
 		if (event_service->pressedUpArrowKey() && current_snake_direction != Direction::DOWN)
 		{
 			current_snake_direction = Direction::UP;
+			current_input_state = InputState::PROCESSING;
 		}
 		else if (event_service->pressedDownArrowKey() && current_snake_direction != Direction::UP)
 		{
 			current_snake_direction = Direction::DOWN;
+			current_input_state = InputState::PROCESSING;
 		}
 		else if (event_service->pressedLeftArrowKey() && current_snake_direction != Direction::RIGHT)
 		{
 			current_snake_direction = Direction::LEFT;
+			current_input_state = InputState::PROCESSING;
 		}
 		else if (event_service->pressedRightArrowKey() && current_snake_direction != Direction::LEFT)
 		{
 			current_snake_direction = Direction::RIGHT;
+			current_input_state = InputState::PROCESSING;
 		}
 	}
 
@@ -104,7 +114,15 @@ namespace Player
 		}
 	}
 
-	void SnakeController::handleRestart() { }
+	void SnakeController::handleRestart()
+	{
+		restart_counter += ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
+
+		if (restart_counter >= restart_duration)
+		{
+			respawnSnake();
+		}
+	}
 
 	void SnakeController::spawnSnake()
 	{
@@ -118,9 +136,16 @@ namespace Player
 		current_snake_state = SnakeState::ALIVE;
 		current_snake_direction = default_direction;
 		elapsed_duration = 0.f;
+		restart_counter = 0.f;
+		current_input_state = InputState::WAITING;
 	}
 
-	void SnakeController::respawnSnake() { }
+	void SnakeController::respawnSnake()
+	{
+		single_linked_list->removeAllNodes();
+		reset();
+		spawnSnake();
+	}
 
 	void SnakeController::setSnakeState(SnakeState state)
 	{
