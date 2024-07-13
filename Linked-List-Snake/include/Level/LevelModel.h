@@ -20,7 +20,7 @@ namespace Level
         LevelModel();
         ~LevelModel();
 
-        void initialize(int width, int height);
+        void initialize(float width, float height);
 
         float getCellWidth();
         float getCellHeight();
