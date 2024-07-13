@@ -9,8 +9,8 @@ namespace Level
     class LevelController
     {
     private:
-        LevelView* level_view;
         LevelModel* level_model;
+        LevelView* level_view;
 
     public:
         LevelController();
