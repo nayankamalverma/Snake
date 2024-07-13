@@ -14,9 +14,12 @@ namespace Player
 	class SnakeController
 	{
 		const int initial_snake_length = 10;
+		const float movement_frame_duration = 0.1f;
 
 		const sf::Vector2i default_position = sf::Vector2i(25, 13);
 		const Direction default_direction = Direction::RIGHT;
+
+		float 	elapsed_duration;
 
 		Direction current_snake_direction;
 		SnakeState current_snake_state;
@@ -29,6 +32,7 @@ namespace Player
 		void moveSnake();
 		void processSnakeCollision();
 		void handleRestart();
+		void delayedUpdate();
 		void reset();
 		void destroy();
 
