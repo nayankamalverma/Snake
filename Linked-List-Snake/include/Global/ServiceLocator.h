@@ -1,4 +1,5 @@
 #pragma once
+#include "Element/ElementService.h"
 #include "Graphics/GraphicService.h"
 #include "Event/EventService.h"
 #include "UI/UIService.h"
@@ -16,6 +17,7 @@ namespace Global
         Graphics::GraphicService* graphic_service;
         Sound::SoundService* sound_service;
         Level::LevelService* level_service;
+        Element::ElementService* element_service;
         Player::PlayerService* player_service;
         UI::UIService* ui_service;
         Time::TimeService* time_service;
@@ -37,6 +39,7 @@ namespace Global
         Graphics::GraphicService* getGraphicService();
         Sound::SoundService* getSoundService();
         Level::LevelService* getLevelService();
+        Element::ElementService* getElementService();
         Player::PlayerService* getPlayerService();
         UI::UIService* getUIService();
         Time::TimeService* getTimeService();
