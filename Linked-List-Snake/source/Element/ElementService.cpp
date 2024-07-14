@@ -1,11 +1,6 @@
 ﻿#include "Element/ElementService.h"
-
 #include "Element/ElementData.h"
-#include "Level/LevelModel.h"
-#include "Global/ServiceLocator.h"
-#include "Level/LevelController.h"
 #include "Element/Obstacle.h"
-#include "Level/LevelModel.h"
 
 namespace Element
 {
@@ -38,7 +33,7 @@ namespace Element
 		{
 			switch (element_data_list[i].element_type)
 			{
-			case::Element::ElementType::OBSTACLE:
+			case ElementType::OBSTACLE:
 				spawnObstacle(element_data_list[i].position, cell_width, cell_height);
 				break;
 			}
@@ -51,5 +46,17 @@ namespace Element
 
 		obstacle->initialize(position, cell_width, cell_height);
 		obstacle_list.push_back(obstacle);
+	}
+
+	std::vector<sf::Vector2i> ElementService::getElementsPositionList()
+	{
+		std::vector<sf::Vector2i> elements_position_list;
+
+		for (int i = 0; i < obstacle_list.size(); i++)
+		{
+			elements_position_list.push_back(obstacle_list[i]->getObstaclePosition());
+		}
+
+		return elements_position_list;
 	}
 }

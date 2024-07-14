@@ -32,6 +32,7 @@ namespace LinkedList
 		void updateNodePosition();
 		void updateNodeDirection(Direction direction_to_set);
 
+		std::vector<sf::Vector2i> getNodesPositionList();
 		bool processNodeCollision();
 		Node* getHeadNode();
 	};

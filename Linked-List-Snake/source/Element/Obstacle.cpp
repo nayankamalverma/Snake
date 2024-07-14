@@ -1,5 +1,4 @@
 #include "Element/Obstacle.h"
-#include "Global/ServiceLocator.h"
 #include "Level/LevelView.h"
 #include "Global/Config.h"
 
@@ -44,6 +43,10 @@ namespace Element
 	void Obstacle::render()
 	{
 		obstacle_image->render();
+	}
+	sf::Vector2i Obstacle::getObstaclePosition()
+	{
+		return grid_position;
 	}
 
 	sf::Vector2f Obstacle::getObstacleImagePosition()
