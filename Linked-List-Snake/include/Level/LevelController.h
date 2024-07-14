@@ -20,6 +20,7 @@ namespace Level
         void update();
         void render();
 
+        const std::vector<Element::ElementData>& getElementDataList(int level_to_load);
         float getCellWidth();
         float getCellHeight();
     };
