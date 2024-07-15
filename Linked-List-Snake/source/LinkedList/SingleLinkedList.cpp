@@ -121,6 +121,16 @@ namespace LinkedList
 		new_node->next = head_node;
 		head_node = new_node;
 	}
+	void SingleLinkedList::insertNodeAtMiddle()
+	{
+		if (head_node == nullptr) {
+			insertNodeAtHead();             // If the list is empty, insert at the head.
+			return;
+		}
+
+		int midIndex = findMiddleNode();    // Use the existing function to find the middle index
+		insertNodeAtIndex(midIndex);      // Use the existing function to insert the node at the found index             
+	}
 
 	void SingleLinkedList::insertNodeAtIndex(int index)
 	{
@@ -172,6 +182,23 @@ namespace LinkedList
 
 		cur_node->next = new_node;
 		initializeNode(new_node, cur_node, Operation::TAIL);
+	}
+
+	int SingleLinkedList::findMiddleNode()
+	{
+		Node* slow = head_node;
+		Node* fast = head_node;
+		int midIndex = 0;  // This will track the index of the middle node.
+
+		// Move fast pointer at 2x speed and slow pointer at 1x speed.
+		while (fast != nullptr && fast->next != nullptr) {
+			slow = slow->next;
+			fast = fast->next->next;
+			midIndex++;
+		}
+
+		// Now, slow is at the middle node
+		return midIndex;
 	}
 
 	void SingleLinkedList::shiftNodesAfterInsertion(Node* new_node, Node* cur_node, Node* prev_node)

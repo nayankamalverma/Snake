@@ -38,8 +38,10 @@ namespace LinkedList
 
 		void initializeNode(Node* new_node, Node* reference_node, Operation operation);
 		void insertNodeAtHead();
+		void insertNodeAtMiddle();
 		void insertNodeAtIndex(int index);
 		void insertNodeAtTail();
+		int findMiddleNode();
 		void shiftNodesAfterInsertion(Node* new_node, Node* cur_node, Node* prev_node);
 		void removeNodeAtHead();
 		void removeAllNodes();
