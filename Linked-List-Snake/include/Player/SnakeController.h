@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include <SFML/Graphics.hpp>
+#include "Food/FoodItem.h"
 #include "Player/Direction.h"
 #include "LinkedList/SingleLinkedList.h"
 
@@ -43,6 +43,7 @@ namespace Player
 		void processBodyCollision();
 		void processElementsCollision();
 		void processFoodCollision();
+		void OnFoodCollected(Food::FoodType type);
 		void handleRestart();
 		void delayedUpdate();
 		void reset();

@@ -1,5 +1,4 @@
 #include "Food/FoodItem.h"
-#include "Global/ServiceLocator.h"
 #include "Level/LevelView.h"
 #include "Global/Config.h"
 #include "Food/FoodType.h"
@@ -71,7 +70,6 @@ namespace Food
 
 	void FoodItem::update()
 	{
-		food_image->update();
 	}
 
 	void FoodItem::render()
@@ -83,6 +81,11 @@ namespace Food
 	{
 		return food_type;
 	}
+	sf::Vector2i FoodItem::getFoodPosition()
+	{
+		return grid_position;
+	}
+
 
 	sf::Vector2f FoodItem::getFoodImagePosition()
 	{
