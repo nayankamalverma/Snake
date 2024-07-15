@@ -1,5 +1,4 @@
 ﻿#pragma once
-#include <SFML/Graphics.hpp>
 #include "UI/UIElement/ImageView.h"
 
 namespace Food
@@ -20,7 +19,7 @@ namespace Food
 
         void initializeFoodImage();
         sf::String getFoodTexturePath();
-        sf::Vector2f getFoodImagePosition();
+    	sf::Vector2f getFoodImagePosition();
 
     public:
         static const int number_of_foods = 8;
@@ -33,5 +32,7 @@ namespace Food
         void render();
 
         FoodType getFoodType();
+        sf::Vector2i getFoodPosition();
+        
     };
 }
