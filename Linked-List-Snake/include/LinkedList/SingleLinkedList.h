@@ -44,7 +44,11 @@ namespace LinkedList
 		int findMiddleNode();
 		void shiftNodesAfterInsertion(Node* new_node, Node* cur_node, Node* prev_node);
 		void removeNodeAtHead();
+		void removeNodeAt(int index);
+		void removeNodeAtIndex(int index);
+		void removeNodeAtMiddle();
 		void removeAllNodes();
+		void shiftNodesAfterRemoval(Node* cur_node);
 		void updateNodePosition();
 		void updateNodeDirection(Direction direction_to_set);
 
