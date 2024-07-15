@@ -37,6 +37,7 @@ namespace LinkedList
 		void render();
 
 		void initializeNode(Node* new_node, Node* reference_node, Operation operation);
+		Node* findNodeAtIndex(int index);
 		void insertNodeAtHead();
 		void insertNodeAtMiddle();
 		void insertNodeAtIndex(int index);
@@ -48,6 +49,7 @@ namespace LinkedList
 		void removeNodeAtIndex(int index);
 		void removeNodeAtMiddle();
 		void removeNodeAtTail();
+		void removeHalfNodes();
 		void removeAllNodes();
 		void shiftNodesAfterRemoval(Node* cur_node);
 		void updateNodePosition();
