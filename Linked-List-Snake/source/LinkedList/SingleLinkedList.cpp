@@ -18,6 +18,7 @@ namespace LinkedList
 		node_height = height;
 		default_position = position;
 		default_direction = direction;
+		linked_list_size = 0;
 	}
 
 	void SingleLinkedList::render()
@@ -92,17 +93,34 @@ namespace LinkedList
 	}
 
 	void SingleLinkedList::initializeNode(Node* new_node, Node* reference_node, Operation operation)
-{
-    if (reference_node == nullptr)
-    {
-        new_node->body_part.initialize(node_width, node_height, default_position, default_direction);
-        return;
-    }
+	{
+		if (reference_node == nullptr)
+		{
+			new_node->body_part.initialize(node_width, node_height, default_position, default_direction);
+			return;
+		}
 
-    sf::Vector2i position = getNewNodePosition(reference_node, operation);
+		sf::Vector2i position = getNewNodePosition(reference_node, operation);
 
-    new_node->body_part.initialize(node_width, node_height, position, reference_node->body_part.getDirection());
-}
+		new_node->body_part.initialize(node_width, node_height, position, reference_node->body_part.getDirection());
+	}
+
+	void SingleLinkedList::insertNodeAtHead()
+	{
+		linked_list_size++;
+		Node* new_node = createNode();
+
+		if (head_node == nullptr)
+		{
+			head_node = new_node;
+			initializeNode(new_node, nullptr, Operation::HEAD);
+			return;
+		}
+
+		initializeNode(new_node, head_node, Operation::HEAD);
+		new_node->next = head_node;
+		head_node = new_node;
+	}
 
 	void SingleLinkedList::insertNodeAtTail()
 	{
