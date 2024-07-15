@@ -143,6 +143,12 @@ namespace Player
 		direction = new_direction;
 	}
 
+	void BodyPart::setPosition(sf::Vector2i pos)
+	{
+		grid_position = pos;
+	}
+
+
 	sf::Vector2i BodyPart::getPosition()
 	{
 		return grid_position;
