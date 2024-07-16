@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include <SFML/System/Vector2.hpp>
+#include "Player/SnakeController.h"
 
 namespace Player
 {
@@ -22,7 +23,14 @@ namespace Player
 		void update();
 		void render();
 
-		std::vector<sf::Vector2i> getCurrentSnakePositionList();
 		void spawnPlayer();
+
+		int getSnakeSize();
+		int getPlayerScore();
+		bool isSnakeSizeMinimum();
+		TimeComplexity getTimeComplexity();
+		LinkedListOperations getLastOperation();
+		SnakeState getSnakeState();
+		std::vector<sf::Vector2i> getCurrentSnakePositionList();
 	};
 }
