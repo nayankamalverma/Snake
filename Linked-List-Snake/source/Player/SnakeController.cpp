@@ -45,6 +45,7 @@ namespace Player
 			break;
 
 		case SnakeState::DEAD:
+			//ServiceLocator::getInstance()->getFoodService()->stopFoodSpawning();
 			handleRestart();
 			break;
 		}
@@ -222,6 +223,9 @@ namespace Player
 		elapsed_duration = 0.f;
 		restart_counter = 0.f;
 		current_input_state = InputState::WAITING;
+
+
+		//ServiceLocator::getInstance()->getFoodService()->startFoodSpawning();
 	}
 
 	void SnakeController::respawnSnake()

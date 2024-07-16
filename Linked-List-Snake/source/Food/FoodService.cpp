@@ -56,6 +56,17 @@ namespace Food
 		reset();
 	}
 
+	bool FoodService::processFoodCollision(LinkedList::Node* head_node, FoodType& out_food_type)
+	{
+		if (current_food_item && current_food_item->getFoodPosition() == head_node->body_part.getPosition())
+		{
+			out_food_type = current_food_item->getFoodType();
+			return true;
+		}
+
+		return false;
+	}
+
 	FoodItem* FoodService::createFood(sf::Vector2i position, FoodType type)
 	{
 		FoodItem* food = new FoodItem();
@@ -94,6 +105,7 @@ namespace Food
 
 	FoodType FoodService::getRandomFoodType()
 	{
+
 		std::uniform_int_distribution<int> distribution(0, FoodItem::number_of_foods - 1);
 
 		return static_cast<FoodType>(distribution(random_engine));
@@ -111,6 +123,7 @@ namespace Food
 	void FoodService::destroyFood()
 	{
 		if (current_food_item) delete(current_food_item);
+		current_food_item = nullptr;
 	}
 
 	void FoodService::updateElapsedDuration()
@@ -127,17 +140,6 @@ namespace Food
 			spawnFood();
 		}
 	}
-
-	bool FoodService::processFoodCollision(LinkedList::Node* head_node, FoodType& out_food_type)
-{
-	if (current_food_item && current_food_item->getFoodPosition() == head_node->body_part.getPosition())
-	{
-		out_food_type = current_food_item->getFoodType();
-		return true;
-	}
-
-	return false;
-}
 
 	void FoodService::reset()
 	{
