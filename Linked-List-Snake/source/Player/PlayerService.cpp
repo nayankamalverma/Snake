@@ -35,14 +35,44 @@ namespace Player
 		snake_controller->render();
 	}
 
+	void PlayerService::spawnPlayer()
+	{
+		snake_controller->spawnSnake();
+	}
+
 	std::vector<sf::Vector2i> PlayerService::getCurrentSnakePositionList()
 	{
 		return snake_controller->getCurrentSnakePositionList();
 	}
 
-	void PlayerService::spawnPlayer()
+	int PlayerService::getSnakeSize()
 	{
-		snake_controller->spawnSnake();
+		return snake_controller->getSnakeSize();
+	}
+
+	int PlayerService::getPlayerScore()
+	{
+		return snake_controller->getPlayerScore();
+	}
+
+	TimeComplexity PlayerService::getTimeComplexity()
+	{
+		return snake_controller->getTimeComplexity();
+	}
+
+	LinkedListOperations PlayerService::getLastOperation()
+	{
+		return snake_controller->getLastOperation();
+	}
+
+	SnakeState PlayerService::getSnakeState()
+	{
+		return snake_controller->getSnakeState();
+	}
+
+	bool PlayerService::isSnakeSizeMinimum()
+	{
+		return snake_controller->isSnakeSizeMinimum();
 	}
 
 	void PlayerService::destroy()
