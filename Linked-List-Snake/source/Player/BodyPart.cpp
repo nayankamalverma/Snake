@@ -140,6 +140,7 @@ namespace Player
 
 	void BodyPart::setDirection(Direction new_direction)
 	{
+		previous_direction = direction;
 		direction = new_direction;
 	}
 
@@ -153,6 +154,11 @@ namespace Player
 	{
 		return grid_position;
 	}
+	Direction BodyPart::getPreviousDirection()
+	{
+		return  previous_direction;
+	}
+
 
 	void BodyPart::destroy()
 	{

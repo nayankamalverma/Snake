@@ -55,6 +55,10 @@ namespace LinkedList
 		void updateNodePosition();
 		void updateNodeDirection(Direction direction_to_set);
 
+		Direction reverse();
+		void reverseNodeDirections();
+		Direction getReverseDirection(Direction reference_direction);
+
 		std::vector<sf::Vector2i> getNodesPositionList();
 		bool processNodeCollision();
 		Node* getHeadNode();
