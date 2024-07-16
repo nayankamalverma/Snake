@@ -152,40 +152,50 @@ namespace Player
 
 	void SnakeController::OnFoodCollected(FoodType food_type)
 	{
-		switch (food_type)
-		{
-		case FoodType::PIZZA:
-			//Insert At Tail
-			break;
+			switch (food_type)
+			{
+			case FoodType::PIZZA:
+				//Insert at TAIL
+				single_linked_list->insertNodeAtTail();
+				break;
 
-		case FoodType::BURGER:
-			//Insert At Head
-			break;
+			case FoodType::BURGER:
+				//Insert at HEAD
+				single_linked_list->insertNodeAtHead();
+				break;
 
-		case FoodType::CHEESE:
-			//Insert in Middle
-			break;
+			case FoodType::CHEESE:
+				//Insert at MIDDLE
+				single_linked_list->insertNodeAtMiddle();
+				break;
 
-		case FoodType::APPLE:
-			//Delete at Head
-			break;
+			case FoodType::APPLE:
+				//Delete at HEAD
+				single_linked_list->removeNodeAtHead();
+				break;
 
-		case FoodType::MANGO:
-			//Delete at Middle
-			break;
+			case FoodType::MANGO:
+				//Delete at MIDDLE
+				single_linked_list->removeNodeAtMiddle();
+				break;
 
-		case FoodType::ORANGE:
-			//Delete at Tail
-			break;
+			case FoodType::ORANGE:
+				//Delete at TAIL
+				single_linked_list->removeNodeAtTail();
+				break;
 
-		case FoodType::POISION:
-			//Delete half the snake
-			break;
+			case FoodType::POISION:
+				//Delete half nodes
+				single_linked_list->removeHalfNodes();
+				break;
 
-		case FoodType::ALCOHOL:
-			//Reverse the snake
-			break;
+			case FoodType::ALCOHOL:
+				//Reverse Direction
+				current_snake_direction = single_linked_list->reverse();
+				break;
+			
 		}
+
 	}
 
 	void SnakeController::handleRestart()
