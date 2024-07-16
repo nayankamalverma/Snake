@@ -1,4 +1,5 @@
 #pragma once
+#include "GameplayUI/GameplayUIController.h"
 #include "UI/MainMenu/MainMenuUIController.h"
 #include "UI/SplashScreen/SplashScreenUIController.h"
 #include "UI/LevelSelection/LevelSelectionUIController.h"
@@ -16,6 +17,7 @@ namespace UI
 		LevelSelection::LevelSelectionUIController* level_selection_ui_controller;
 		Instructions::InstructionsScreenUIController* instructions_screen_ui_controller;
 		Credits::CreditsScreenUIController* credits_screen_ui_controller;
+		GameplayUI::GameplayUIController* gameplay_ui_controller;
 
 
 		void createControllers();
