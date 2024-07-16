@@ -1,7 +1,6 @@
 ﻿#pragma once
 #include <SFML/System/Vector2.hpp>
-#include "LinkedList/Node.h"
-#include "LinkedList/SingleLinkedList.h"
+#include "LinkedListLib/LinkedList/SingleLinkedList.h"
 #include "Food/FoodType.h"
 
 namespace Player
@@ -48,19 +47,19 @@ namespace Player
 		const int minimum_snake_size = 3;
 
 		const sf::Vector2i default_position = sf::Vector2i(25, 13);
-		const LinkedList::Direction default_direction = LinkedList::Direction::RIGHT;
+		const LinkedListLib::Direction default_direction = LinkedListLib::Direction::RIGHT;
 
 		SnakeState current_snake_state;
 		float elapsed_duration;
 		float restart_counter;
-		LinkedList::Direction current_snake_direction;
+		LinkedListLib::Direction current_snake_direction;
 		InputState current_input_state;
 
 		int player_score;
 		TimeComplexity time_complexity;
 		LinkedListOperations last_linked_list_operation;
 
-		LinkedList::SingleLinkedList* single_linked_list;
+		LinkedListLib::SingleLinkedList* single_linked_list;
 
 		void createLinkedList();
 		void processPlayerInput();
