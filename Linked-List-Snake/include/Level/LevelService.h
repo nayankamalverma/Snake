@@ -29,5 +29,6 @@ namespace Level
         float getCellWidth();
         float getCellHeight();
         LevelNumber getCurrentLevel();
+        void setCurrentLevelNumber(LevelNumber level_number);
     };
 }
