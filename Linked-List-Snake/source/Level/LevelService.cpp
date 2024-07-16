@@ -70,6 +70,11 @@ namespace Level
 		return current_level;
 	}
 
+	void LevelService::setCurrentLevelNumber(LevelNumber level_number)
+	{
+		current_level = level_number;
+	}
+
 
 	void LevelService::spawnPlayer()
 	{
