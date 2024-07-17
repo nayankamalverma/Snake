@@ -15,8 +15,11 @@ namespace UI
 			const float button_width = 400.f;
 			const float button_height = 140.f;
 
-			const float level_one_button_y_position = 500.f;
-			const float level_two_button_y_position = 700.f;
+			const float level_one_button_y_position = 400.f;
+			const float level_two_button_y_position = 500.f;
+			const float level_three_button_y_position = 600.f;
+			const float level_four_button_y_position = 700.f;
+
 			const float menu_button_y_position = 900.f;
 
 			const float background_alpha = 85.f;
@@ -25,6 +28,8 @@ namespace UI
 
 			UI::UIElement::ButtonView* level_one_button;
 			UI::UIElement::ButtonView* level_two_button;
+			UI::UIElement::ButtonView* level_three_button;
+			UI::UIElement::ButtonView* level_four_button;
 			UI::UIElement::ButtonView* menu_button;
 
 			void createImage();
@@ -36,6 +41,8 @@ namespace UI
 
 			void levelOneButtonCallback();
 			void levelTwoButtonCallback();
+			void levelThreeButtonCallback();
+			void levelFourButtonCallback();
 			void menuButtonCallback();
 
 			void destroy();

@@ -113,7 +113,7 @@ namespace Food
 
 	bool FoodService::isValidPosition(std::vector<sf::Vector2i> position_data, sf::Vector2i food_position)
 	{
-		for (int i = 0; i < position_data.size(); i++)
+		for(int i = 0; i < position_data.size(); i++)
 		{
 			if (food_position == position_data[i]) return false;
 		}
