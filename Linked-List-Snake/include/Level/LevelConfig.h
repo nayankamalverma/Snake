@@ -6,8 +6,6 @@ namespace Level
     {
         ONE,
         TWO,
-        THREE,
-        FOUR
     };
 
     enum class LinkedListType
