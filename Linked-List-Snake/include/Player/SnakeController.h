@@ -53,7 +53,7 @@ namespace Player
 
 		const int minimum_snake_size = 3;
 
-		const sf::Vector2i default_position = sf::Vector2i(25, 13);
+		const sf::Vector2i default_position = sf::Vector2i(13, 13);
 		const Direction default_direction = Direction::RIGHT;
 
 		SnakeState current_snake_state;
@@ -81,12 +81,14 @@ namespace Player
 		void processBodyCollision();
 		void processElementsCollision();
 		void processFoodCollision();
+		void processHunterSnakeCollision();
 
 		void OnFoodCollected(FoodType food_type);
 		int getRandomBodyPartIndex();
 
 		void handleSpeedBoost();
 		void handleRestart();
+		void snakeDead();
 		void reset();
 		void destroy();
 
@@ -113,5 +115,6 @@ namespace Player
 		bool isSnakeSizeMinimum();
 		bool isSpeedBoost();
 		float getSpeedBoostTime();
+		
 	};
 }

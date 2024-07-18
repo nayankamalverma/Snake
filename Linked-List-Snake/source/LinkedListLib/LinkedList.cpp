@@ -11,13 +11,15 @@ namespace LinkedListLib
 
     LinkedList::~LinkedList() = default;
 
-    void LinkedList::initialize(float width, float height, sf::Vector2i position, Direction direction)
+    void LinkedList::initialize(sf::String path, float width, float height, sf::Vector2i position, Direction direction, sf::Color color)
     {
         node_width = width;
         node_height = height;
         default_position = position;
         default_direction = direction;
         linked_list_size = 0;
+        snake_color = color;
+        texture_path = path;
     }
 
     void LinkedList::render()
@@ -59,13 +61,14 @@ namespace LinkedListLib
     {
         if (reference_node == nullptr)
         {
-            new_node->body_part.initialize(node_width, node_height, default_position, default_direction);
+            new_node->body_part.initialize(texture_path,node_width, node_height, default_position, default_direction);
+            new_node->body_part.setColor(snake_color);
             return;
         }
 
         sf::Vector2i position = getNewNodePosition(reference_node, operation);
 
-        new_node->body_part.initialize(node_width, node_height, position, reference_node->body_part.getDirection());
+        new_node->body_part.initialize(texture_path,node_width, node_height, position, reference_node->body_part.getDirection());
     }
 
     bool LinkedList::processNodeCollision()
@@ -73,6 +76,26 @@ namespace LinkedListLib
         if (head_node == nullptr) return false;
 
         sf::Vector2i predicted_position = head_node->body_part.getNextPosition();
+
+        Node* cur_node = head_node->next;
+        while (cur_node != nullptr)
+        {
+            if (cur_node->body_part.getNextPosition() == predicted_position)
+            {
+                return true;
+            }
+
+            cur_node = cur_node->next;
+        }
+
+        return false;
+    }
+
+    bool LinkedList::processNodeCollision(Node* head)
+    {
+        if (head_node == nullptr) return false;
+
+        sf::Vector2i predicted_position = head->body_part.getPosition();
 
         Node* cur_node = head_node->next;
         while (cur_node != nullptr)

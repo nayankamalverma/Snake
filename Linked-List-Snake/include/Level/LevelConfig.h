@@ -7,7 +7,8 @@ namespace Level
         ONE,
         TWO,
         THREE,
-        FOUR
+        FOUR ,
+        BOSS_LEVEL
     };
 
     enum class LinkedListType

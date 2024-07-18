@@ -121,6 +121,7 @@ namespace LinkedListLib
 
         void SingleLinkedList::removeNodeAtTail()
         {
+            if (linked_list_size <= 2)return;
             if (head_node == nullptr) return;
 
             Node* cur_node = head_node;
@@ -152,7 +153,8 @@ namespace LinkedListLib
         }
 
         void SingleLinkedList::removeNodeAtMiddle() {
-            if (head_node == nullptr) return; // If the list is empty, there's nothing to remove
+            if (linked_list_size <= 2)return;
+        	if (head_node == nullptr) return; // If the list is empty, there's nothing to remove
 
             int midIndex = findMiddleNode();  // Use the existing function to find the middle index
             removeNodeAt(midIndex);           // Use the existing function to remove the node at the found index
@@ -160,6 +162,7 @@ namespace LinkedListLib
 
         void SingleLinkedList::removeNodeAt(int index)
         {
+            if (linked_list_size <= 2)return;
             if (index < 0 || index >= linked_list_size) return;
 
             if (index == 0)
@@ -174,6 +177,7 @@ namespace LinkedListLib
 
         void SingleLinkedList::removeNodeAtIndex(int index)
         {
+            if (linked_list_size <= 2)return;
             linked_list_size--;
             int current_index = 0;
             Node* cur_node = head_node;
@@ -214,6 +218,7 @@ namespace LinkedListLib
 
         void SingleLinkedList::removeAllNodes()
         {
+           
             if (head_node == nullptr) return;
 
             while (head_node != nullptr)
@@ -224,7 +229,7 @@ namespace LinkedListLib
 
         void SingleLinkedList::removeHalfNodes()
         {
-            if (linked_list_size <= 1) return;
+            if (linked_list_size <= 2)return;
             int half_length = linked_list_size / 2;
             int new_tail_index = half_length - 1;
 

@@ -1,5 +1,6 @@
 #pragma once
 #include "Element/ElementService.h"
+#include "Enemy/EnemyService.h"
 #include "Graphics/GraphicService.h"
 #include "Event/EventService.h"
 #include "Food/FoodService.h"
@@ -20,6 +21,7 @@ namespace Global
         Level::LevelService* level_service;
         Element::ElementService* element_service;
         Player::PlayerService* player_service;
+        Enemy::EnemyService* enemy_service;
         Food::FoodService* food_service;
         UI::UIService* ui_service;
         Time::TimeService* time_service;
@@ -43,6 +45,7 @@ namespace Global
         Level::LevelService* getLevelService();
         Element::ElementService* getElementService();
         Player::PlayerService* getPlayerService();
+        Enemy::EnemyService* getEnemyService();
         Food::FoodService* getFoodService();
         UI::UIService* getUIService();
         Time::TimeService* getTimeService();

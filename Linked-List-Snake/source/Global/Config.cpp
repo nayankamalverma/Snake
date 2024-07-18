@@ -12,6 +12,8 @@ namespace Global
 
 	const sf::String Config::snake_body_texture_path = "assets/textures/snake_body.png";
 
+	const sf::String Config::hunter_snake_body_texture_path = "assets/textures/hunter_snake_body.png";
+
 	const sf::String Config::apple_texture_path = "assets/textures/apple.png";
 
 	const sf::String Config::mango_texture_path = "assets/textures/mango.png";
@@ -45,6 +47,8 @@ namespace Global
 	const sf::String Config::level_three_button_texture_path = "assets/textures/level_three.png";
 
 	const sf::String Config::level_four_button_texture_path = "assets/textures/level_four.png";
+
+	const sf::String Config::boss_level_button_texture_path = "assets/textures/boss_level.png";
 
 	const sf::String Config::single_linked_list_button_texture_path = "assets/textures/single_linked_list_button.png";
 

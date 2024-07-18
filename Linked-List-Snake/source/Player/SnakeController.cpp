@@ -4,6 +4,7 @@
 #include "Event/EventService.h"
 #include "Element/ElementService.h"
 #include "Food/FoodService.h"
+#include "Global/Config.h"
 #include "LinkedListLib/SingleLinked/SingleLinkedList.h"
 #include "LinkedListLib/DoubleLinked/DoubleLinkedList.h"
 
@@ -51,7 +52,7 @@ namespace Player
 		float height = ServiceLocator::getInstance()->getLevelService()->getCellHeight();
 
 		reset();
-		linked_list->initialize(width, height, default_position, default_direction);
+		linked_list->initialize(Config::snake_body_texture_path ,width, height, default_position, default_direction,sf::Color::Green);
 	}
 
 	void SnakeController::initialize() { }
@@ -137,14 +138,14 @@ namespace Player
 		processBodyCollision();
 		processElementsCollision();
 		processFoodCollision();
+		processHunterSnakeCollision();
 	}
 
 	void SnakeController::processBodyCollision()
 	{
 		if (linked_list->processNodeCollision())
 		{
-			current_snake_state = SnakeState::DEAD;
-			ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::DEATH);
+			snakeDead();
 		}
 	}
 
@@ -154,8 +155,7 @@ namespace Player
 
 		if (element_service->processElementsCollision(linked_list->getHeadNode()))
 		{
-			current_snake_state = SnakeState::DEAD;
-			ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::DEATH);
+			snakeDead();
 		}
 	}
 
@@ -174,6 +174,16 @@ namespace Player
 			player_score++;
 		}
 	}
+
+	void SnakeController::processHunterSnakeCollision()
+	{
+		Enemy::EnemyService* enemy_service = ServiceLocator::getInstance()->getEnemyService();
+		if (enemy_service->processSnakeCollision(linked_list->getHeadNode()))
+		{
+			snakeDead();
+		}
+	}
+
 
 	void SnakeController::OnFoodCollected(FoodType food_type)
 	{
@@ -274,6 +284,7 @@ namespace Player
 
 	void SnakeController::reset()
 	{
+		printf("reset");
 		current_snake_state = SnakeState::ALIVE;
 		current_snake_direction = default_direction;
 
@@ -291,6 +302,7 @@ namespace Player
 	{
 		linked_list->removeAllNodes();
 		reset();
+
 		spawnSnake();
 	}
 
@@ -360,6 +372,12 @@ namespace Player
 	float SnakeController::getSpeedBoostTime()
 	{
 		return speed_boost_elapsed_duration;
+	}
+
+	void SnakeController::snakeDead()
+	{
+		current_snake_state = SnakeState::DEAD;
+		ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::DEATH);
 	}
 
 
