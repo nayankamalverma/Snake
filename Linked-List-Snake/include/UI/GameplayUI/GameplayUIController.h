@@ -14,6 +14,7 @@ namespace UI
 
 			const float text_y_position = 7.f;
 			const float level_number_text_x_position = 65.f;
+			const float  speed_boost_timer_x_position = 320.f;
 			const float score_text_x_position = 800.f;
 
 			// Constants: Operations and Time Complexities
@@ -27,6 +28,7 @@ namespace UI
 			UI::UIElement::TextView* score_text;
 			UI::UIElement::TextView* time_complexity_text;
 			UI::UIElement::TextView* operation_text;
+			UI::UIElement::TextView* speed_boost_timer;
 
 			void createTexts();
 			void initializeTexts();
@@ -34,11 +36,13 @@ namespace UI
 			void initializeScoreText();
 			void initializeTimeComplexityText();
 			void initializeOperationText();
+			void initializeSpeedBoostText();
 
 			void updateLevelNumberText();
 			void updateScoreText();
 			void updateTimeComplexityText();
 			void updateOperationText();
+			void updateSpeedBoostText();
 
 			void destroy();
 

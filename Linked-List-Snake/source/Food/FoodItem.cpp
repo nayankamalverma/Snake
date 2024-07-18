@@ -65,6 +65,9 @@ namespace Food
 
 		case Food::FoodType::ALCOHOL:
 			return Config::alcohol_texture_path;
+
+		case FoodType::BOOSTER:
+			return Config::booster_texture_path;
 		}
 	}
 

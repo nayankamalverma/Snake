@@ -28,6 +28,8 @@ namespace Global
 
 	const sf::String Config::alcohol_texture_path = "assets/textures/alcohol.png";
 
+	const sf::String Config::booster_texture_path = "assets/textures/booster.png";
+
 	const sf::String Config::play_button_texture_path = "assets/textures/play_button.png";
 
 	const sf::String Config::instructions_button_texture_path = "assets/textures/instructions_button.png";

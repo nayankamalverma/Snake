@@ -47,8 +47,9 @@ namespace Player
 	{
 	private:
 		const int initial_snake_length = 10;
-		const float movement_frame_duration = 0.1f;
+		float movement_frame_duration = 0.1f;  //snake position frame update speed
 		const float restart_duration = 3.f;
+		const float speed_boost_duration = 8.f;			//speed boost duration
 
 		const int minimum_snake_size = 3;
 
@@ -56,11 +57,13 @@ namespace Player
 		const Direction default_direction = Direction::RIGHT;
 
 		SnakeState current_snake_state;
+		float speed_boost_elapsed_duration;
 		float elapsed_duration;
 		float restart_counter;
 		Direction current_snake_direction;
 		InputState current_input_state;
 
+		bool speedBooster;
 		int player_score;
 		TimeComplexity time_complexity;
 		LinkedListOperations last_linked_list_operation;
@@ -82,6 +85,7 @@ namespace Player
 		void OnFoodCollected(FoodType food_type);
 		int getRandomBodyPartIndex();
 
+		void handleSpeedBoost();
 		void handleRestart();
 		void reset();
 		void destroy();
@@ -107,5 +111,7 @@ namespace Player
 		bool isSnakeDead();
 		int getSnakeSize();
 		bool isSnakeSizeMinimum();
+		bool isSpeedBoost();
+		float getSpeedBoostTime();
 	};
 }

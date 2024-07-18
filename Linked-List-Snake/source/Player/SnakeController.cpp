@@ -63,6 +63,7 @@ namespace Player
 		case SnakeState::ALIVE:
 			processPlayerInput();
 			delayedUpdate();
+			handleSpeedBoost();
 			break;
 
 		case SnakeState::DEAD:
@@ -233,6 +234,12 @@ namespace Player
 			time_complexity = TimeComplexity::N;
 			last_linked_list_operation = LinkedListOperations::REVERSE_LIST;
 			break;
+		case FoodType::BOOSTER:
+			printf("I FEEL THE NEED... THE NEED FOR SPEED.\n");
+			speedBooster = true;
+			movement_frame_duration = 0.05f;
+			speed_boost_elapsed_duration = 0;
+			break;
 		}
 	}
 
@@ -245,6 +252,17 @@ namespace Player
 			respawnSnake();
 		}
 	}
+
+	void SnakeController::handleSpeedBoost()
+	{
+		speed_boost_elapsed_duration += ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
+		if(speed_boost_elapsed_duration>=speed_boost_duration)
+		{
+			movement_frame_duration = 0.1f;
+			speedBooster = false;
+		}
+	}
+
 
 	void SnakeController::spawnSnake()
 	{
@@ -263,6 +281,7 @@ namespace Player
 		elapsed_duration = 0.f;
 		restart_counter = 0.f;
 		player_score = 0;
+		speedBooster = false;
 		current_input_state = InputState::WAITING;
 		time_complexity = TimeComplexity::NONE;
 		last_linked_list_operation = LinkedListOperations::NONE;
@@ -332,5 +351,16 @@ namespace Player
 			return true;
 		return false;
 	}
+
+	bool SnakeController::isSpeedBoost()
+	{
+		return speedBooster;
+	}
+
+	float SnakeController::getSpeedBoostTime()
+	{
+		return speed_boost_elapsed_duration;
+	}
+
 
 }
