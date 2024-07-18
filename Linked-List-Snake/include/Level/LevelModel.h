@@ -7,7 +7,8 @@ namespace Level
 {
     class LevelModel
     {
-        std::vector<Element::ElementData> level_one_element_list;
+        std::vector<Element::ElementData> boss_level_element_list;
+    	std::vector<Element::ElementData> level_one_element_list;
 
         std::vector<Element::ElementData> level_two_element_list =
         {

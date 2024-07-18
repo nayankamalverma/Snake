@@ -91,6 +91,26 @@ namespace LinkedListLib
         return false;
     }
 
+    bool LinkedList::processNodeCollision(Node* head)
+    {
+        if (head_node == nullptr) return false;
+
+        sf::Vector2i predicted_position = head->body_part.getPosition();
+
+        Node* cur_node = head_node->next;
+        while (cur_node != nullptr)
+        {
+            if (cur_node->body_part.getNextPosition() == predicted_position)
+            {
+                return true;
+            }
+
+            cur_node = cur_node->next;
+        }
+
+        return false;
+    }
+
     Node* LinkedList::createNode()
     {
         return new Node();

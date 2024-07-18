@@ -107,7 +107,7 @@ namespace Enemy
 		{
 			elapsed_duration = 0.f;
 			updateSnakeDirection();
-			processSnakeCollision();
+			//processSnakeCollision();
 
 			if (current_snake_state != SnakeState::DEAD)
 				moveSnake();
@@ -127,9 +127,13 @@ namespace Enemy
 	}
 
 
-	void HunterSnakeController::processSnakeCollision()
+	bool HunterSnakeController::processSnakeCollision(LinkedListLib::Node* head_node)
 	{
-			  //snakecontroller proccessbodycollision
+		if (linked_list->processNodeCollision(head_node))
+		{
+			return true;
+		}
+		return false;
 	}
 
 	

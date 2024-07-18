@@ -61,6 +61,7 @@ namespace LinkedListLib
 		Node* getHeadNode();
 		int getLinkedListSize();
 		bool processNodeCollision();
+		bool processNodeCollision(Node* head);
 		void reverseNodeDirections();
 
 		std::vector<sf::Vector2i> getNodesPositionList();

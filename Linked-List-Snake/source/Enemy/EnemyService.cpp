@@ -9,6 +9,7 @@ namespace Enemy
 	EnemyService::EnemyService()
 	{
 		hunter_snake_controller = nullptr;
+		bossLevel = false;
 		createController();
 	}
 
@@ -31,17 +32,25 @@ namespace Enemy
 	{
 		hunter_snake_controller->createLinkedList(level_type);
 		hunter_snake_controller->spawnSnake();
+		bossLevel = true;
 	}
 
 	void EnemyService::update()
 	{
-		hunter_snake_controller->update();
+		if(bossLevel) hunter_snake_controller->update();
 	}
 
 	void EnemyService::render()
 	{
-		hunter_snake_controller->render();
+		if (bossLevel) hunter_snake_controller->render();
 	}
+
+	bool EnemyService::processSnakeCollision(Node* head)
+	{
+		if (!bossLevel)return false;
+		return hunter_snake_controller->processSnakeCollision(head);
+	}
+
 
 	void EnemyService::destroy()
 	{

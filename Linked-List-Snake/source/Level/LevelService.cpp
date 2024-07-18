@@ -80,7 +80,7 @@ namespace Level
 	{
 		ServiceLocator::getInstance()->getPlayerService()->spawnPlayer(current_linked_list_type);
 		if(LevelNumber::ONE == getCurrentLevel())
-		ServiceLocator::getInstance()->getEnemyService()->spawnEnemy(LinkedListType::SINGLE_LINKED_LIST);
+			ServiceLocator::getInstance()->getEnemyService()->spawnEnemy(LinkedListType::SINGLE_LINKED_LIST);
 	}
 
 	void LevelService::spawnLevelElements(LevelNumber level_to_load)

@@ -15,7 +15,7 @@ namespace Enemy
 		const float movement_frame_duration = 0.1f;  //snake position frame update speed
 		const float restart_duration = 3.f;
 
-		const sf::Vector2i default_position = sf::Vector2i(30, 13);
+		const sf::Vector2i default_position = sf::Vector2i(33, 13);
 		const Direction default_direction = Direction::LEFT;
 
 		float elapsed_duration;
@@ -33,7 +33,7 @@ namespace Enemy
 		void updateSnakeDirection();
 		void delayedUpdate();
 		void moveSnake();
-		void processSnakeCollision();
+		
 
 		void handleRestart();
 
@@ -50,6 +50,7 @@ namespace Enemy
 		void createLinkedList(LinkedListType level_type);
 		void spawnSnake();
 		void respawnSnake();
+		bool processSnakeCollision(LinkedListLib::Node* head_node);
 
 	};
 }

@@ -138,14 +138,14 @@ namespace Player
 		processBodyCollision();
 		processElementsCollision();
 		processFoodCollision();
+		processHunterSnakeCollision();
 	}
 
 	void SnakeController::processBodyCollision()
 	{
 		if (linked_list->processNodeCollision())
 		{
-			current_snake_state = SnakeState::DEAD;
-			ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::DEATH);
+			snakeDead();
 		}
 	}
 
@@ -155,8 +155,7 @@ namespace Player
 
 		if (element_service->processElementsCollision(linked_list->getHeadNode()))
 		{
-			current_snake_state = SnakeState::DEAD;
-			ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::DEATH);
+			snakeDead();
 		}
 	}
 
@@ -175,6 +174,16 @@ namespace Player
 			player_score++;
 		}
 	}
+
+	void SnakeController::processHunterSnakeCollision()
+	{
+		Enemy::EnemyService* enemy_service = ServiceLocator::getInstance()->getEnemyService();
+		if (enemy_service->processSnakeCollision(linked_list->getHeadNode()))
+		{
+			snakeDead();
+		}
+	}
+
 
 	void SnakeController::OnFoodCollected(FoodType food_type)
 	{
@@ -363,6 +372,12 @@ namespace Player
 	float SnakeController::getSpeedBoostTime()
 	{
 		return speed_boost_elapsed_duration;
+	}
+
+	void SnakeController::snakeDead()
+	{
+		current_snake_state = SnakeState::DEAD;
+		ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::DEATH);
 	}
 
 
