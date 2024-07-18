@@ -49,6 +49,7 @@ namespace UI
             level_two_button = new ButtonView();
             level_three_button = new ButtonView();
             level_four_button = new ButtonView();
+            boss_level_button = new ButtonView();
             menu_button = new ButtonView();
         }
 
@@ -68,7 +69,9 @@ namespace UI
             level_two_button->initialize("Level Two Button", Config::level_two_button_texture_path, button_width, button_height, sf::Vector2f(x_position, level_two_button_y_position));
             level_three_button->initialize("Level Three Button", Config::level_three_button_texture_path, button_width, button_height, sf::Vector2f(x_position, level_three_button_y_position));
             level_four_button->initialize("Level Four Button", Config::level_four_button_texture_path, button_width, button_height, sf::Vector2f(x_position, level_four_button_y_position));
-            menu_button->initialize("Menu Button", Config::menu_button_texture_path, button_width, button_height, sf::Vector2f(x_position, menu_button_y_position));
+            boss_level_button->initialize("Boss Level Button", Config::boss_level_button_texture_path, button_width, button_height, sf::Vector2f(x_position, boss_level_button_y_position));
+
+        	menu_button->initialize("Menu Button", Config::menu_button_texture_path, button_width, button_height, sf::Vector2f(x_position, menu_button_y_position));
         }
 
         void LevelSelectionUIController::registerButtonCallback()
@@ -77,6 +80,7 @@ namespace UI
             level_two_button->registerCallbackFuntion(std::bind(&LevelSelectionUIController::levelTwoButtonCallback, this));
             level_three_button->registerCallbackFuntion(std::bind(&LevelSelectionUIController::levelThreeButtonCallback, this));
             level_four_button->registerCallbackFuntion(std::bind(&LevelSelectionUIController::levelFourButtonCallback, this));
+            boss_level_button->registerCallbackFuntion(std::bind(&LevelSelectionUIController::bossLevelButtonCallback, this));
             
             menu_button->registerCallbackFuntion(std::bind(&LevelSelectionUIController::menuButtonCallback, this));
         }
@@ -115,6 +119,13 @@ namespace UI
             ServiceLocator::getInstance()->getLevelService()->setCurrentLevelNumber(Level::LevelNumber::FOUR);
         }
 
+        void LevelSelectionUIController::bossLevelButtonCallback()
+        {
+            ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::BUTTON_CLICK);
+            GameService::setGameState(GameState::LINKED_LIST_SELECTION);
+            ServiceLocator::getInstance()->getLevelService()->setCurrentLevelNumber(Level::LevelNumber::BOSS_LEVEL);
+        }
+
 
         void LevelSelectionUIController::menuButtonCallback()
         {
@@ -129,6 +140,7 @@ namespace UI
             level_two_button->update();
             level_three_button->update();
             level_four_button->update();
+            boss_level_button->update();
             menu_button->update();
         }
 
@@ -139,6 +151,7 @@ namespace UI
             level_two_button->render();
             level_three_button->render();
             level_four_button->render();
+            boss_level_button->render();
             menu_button->render();
         }
 
@@ -149,6 +162,7 @@ namespace UI
             level_two_button->show();
             level_three_button->show();
             level_four_button->show();
+            boss_level_button->show();
             menu_button->show();
         }
 
@@ -159,6 +173,7 @@ namespace UI
             delete (level_two_button);
             delete(level_three_button);
             delete(level_four_button);
+            delete(boss_level_button);
             delete (menu_button);
         }
     }

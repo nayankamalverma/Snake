@@ -85,6 +85,7 @@ namespace UI
             sf::String level_number_value = std::to_string(1 + static_cast<int>(level_number));
 
             level_number_text->setText("Level : " + level_number_value);
+            if(level_number_value == "5") level_number_text->setText("Level : Boss Level");
             level_number_text->update();
         }
 

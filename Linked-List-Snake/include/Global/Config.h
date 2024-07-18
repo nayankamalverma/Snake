@@ -31,6 +31,7 @@ namespace Global
 		static const sf::String level_two_button_texture_path;
 		static const sf::String level_three_button_texture_path;
 		static const sf::String level_four_button_texture_path;
+		static const sf::String boss_level_button_texture_path;
 		static const sf::String single_linked_list_button_texture_path;
 		static const sf::String double_linked_list_button_texture_path;
 
