@@ -83,6 +83,17 @@ namespace Player
 		return snake_controller->isSnakeSizeMinimum();
 	}
 
+	bool PlayerService::isSpeedBoost()
+	{
+		return snake_controller->isSpeedBoost();
+	}
+
+	float PlayerService::speedBoostTimeLeft()
+	{
+		return snake_controller->getSpeedBoostTime();
+	}
+
+
 	void PlayerService::destroy()
 	{
 		delete (snake_controller);

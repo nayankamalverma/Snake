@@ -35,5 +35,7 @@ namespace Player
 		LinkedListOperations getLastOperation();
 		SnakeState getSnakeState();
 		std::vector<sf::Vector2i> getCurrentSnakePositionList();
+		bool isSpeedBoost();
+		float speedBoostTimeLeft();
 	};
 }

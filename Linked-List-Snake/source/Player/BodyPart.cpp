@@ -100,7 +100,7 @@ namespace Player
 
 	sf::Vector2i BodyPart::getNextPositionDown()
 	{
-		return sf::Vector2i(grid_position.x, (grid_position.y + 1) % (LevelModel::number_of_rows));
+		return sf::Vector2i(grid_position.x, (grid_position.y +1) % (LevelModel::number_of_rows));
 	}
 
 	sf::Vector2i BodyPart::getNextPositionUp()

@@ -41,6 +41,7 @@ namespace UI
             score_text = new TextView();
             time_complexity_text = new TextView();
             operation_text = new TextView();
+            speed_boost_timer = new TextView();
         }
 
         void GameplayUIController::initializeTexts()
@@ -49,6 +50,8 @@ namespace UI
             initializeScoreText();
             initializeTimeComplexityText();
             initializeOperationText();
+            initializeSpeedBoostText();
+
         }
 
         void GameplayUIController::initializeLevelNumberText()
@@ -69,6 +72,11 @@ namespace UI
         void GameplayUIController::initializeOperationText()
         {
             operation_text->initialize("Last Operation : Insert at Middle", sf::Vector2f(operations_text_x_position, operations_text_y_position), FontType::BUBBLE_BOBBLE, operations_font_size, sf::Color::Black);
+        }
+
+        void GameplayUIController::initializeSpeedBoostText()
+        {
+            speed_boost_timer->initialize("Speed boost timer", sf::Vector2f(speed_boost_timer_x_position, text_y_position), FontType::BUBBLE_BOBBLE, font_size, sf::Color::Black);
         }
 
         void GameplayUIController::updateLevelNumberText()
@@ -149,12 +157,20 @@ namespace UI
             operation_text->update();
         }
 
+        void GameplayUIController::updateSpeedBoostText()
+        {
+            speed_boost_timer->setText("Booster : 0" + std::to_string(8- static_cast<int>(ServiceLocator::getInstance()->getPlayerService()->speedBoostTimeLeft())));
+            speed_boost_timer->update();
+        }
+
+
         void GameplayUIController::update()
         {
             updateLevelNumberText();
             updateScoreText();
             updateTimeComplexityText();
             updateOperationText();
+            updateSpeedBoostText();
         }
 
         void GameplayUIController::render()
@@ -163,6 +179,10 @@ namespace UI
             score_text->render();
             time_complexity_text->render();
             operation_text->render();
+            if(ServiceLocator::getInstance()->getPlayerService()->isSpeedBoost())
+            {
+                speed_boost_timer->render();
+            }
         }
 
         void GameplayUIController::show()
@@ -171,6 +191,7 @@ namespace UI
             score_text->show();
             time_complexity_text->show();
             operation_text->show();
+            speed_boost_timer->show();
         }
 
         void GameplayUIController::destroy()
@@ -179,6 +200,7 @@ namespace UI
             delete (score_text);
             delete (time_complexity_text);
             delete (operation_text);
+            delete(speed_boost_timer);
         }
     }
 }

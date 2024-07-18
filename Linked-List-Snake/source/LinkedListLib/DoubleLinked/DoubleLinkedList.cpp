@@ -126,6 +126,7 @@ namespace LinkedListLib
 
         void DoubleLinkedList::removeNodeAtTail()
         {
+        	if(linked_list_size<=2)return;
             if (head_node == nullptr) return;
 
             Node* cur_node = head_node;
@@ -149,6 +150,7 @@ namespace LinkedListLib
 
         void DoubleLinkedList::removeNodeAtHead()
         {
+            if (linked_list_size <= 2)return;
             linked_list_size--;
 
             Node* cur_node = head_node;
@@ -165,6 +167,7 @@ namespace LinkedListLib
 
         void DoubleLinkedList::removeNodeAtMiddle()
         {
+            if (linked_list_size <= 2)return;
             if (head_node == nullptr) return; // If the list is empty, there's nothing to remove
 
             int midIndex = findMiddleNode();  // Use the existing function to find the middle index
@@ -187,6 +190,7 @@ namespace LinkedListLib
 
         void DoubleLinkedList::removeNodeAtIndex(int index)
         {
+            if (linked_list_size <= 2)return;
             linked_list_size--;
 
             int current_index = 0;
@@ -247,7 +251,7 @@ namespace LinkedListLib
 
         void DoubleLinkedList::removeHalfNodes()
         {
-            if (linked_list_size <= 1) return;
+            if (linked_list_size <= 2)return;
             int half_length = linked_list_size / 2;
             int new_tail_index = half_length - 1;
 

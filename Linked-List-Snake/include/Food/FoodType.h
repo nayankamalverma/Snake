@@ -12,5 +12,6 @@ namespace Food
         CHEESE,
         POISION,
         ALCOHOL,
+        BOOSTER
     };
 }
