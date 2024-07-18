@@ -150,7 +150,6 @@ namespace LinkedListLib
 
         void DoubleLinkedList::removeNodeAtHead()
         {
-            if (linked_list_size <= 2)return;
             linked_list_size--;
 
             Node* cur_node = head_node;

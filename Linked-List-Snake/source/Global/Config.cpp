@@ -12,6 +12,8 @@ namespace Global
 
 	const sf::String Config::snake_body_texture_path = "assets/textures/snake_body.png";
 
+	const sf::String Config::hunter_snake_body_texture_path = "assets/textures/hunter_snake_body.png";
+
 	const sf::String Config::apple_texture_path = "assets/textures/apple.png";
 
 	const sf::String Config::mango_texture_path = "assets/textures/mango.png";

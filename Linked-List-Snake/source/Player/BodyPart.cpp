@@ -21,13 +21,13 @@ namespace Player
 		destroy();
 	}
 
-	void BodyPart::initialize(float width, float height, sf::Vector2i pos, Direction dir)
+	void BodyPart::initialize(sf::String path, float width, float height, sf::Vector2i pos, Direction dir)
 	{
 		bodypart_width = width;
 		bodypart_height = height;
 		direction = dir;
 		grid_position = pos;
-
+		texture_path = path;
 		initializeBodyPartImage();
 	}
 
@@ -38,7 +38,7 @@ namespace Player
 
 	void BodyPart::initializeBodyPartImage()
 	{
-		bodypart_image->initialize(Config::snake_body_texture_path, bodypart_width, bodypart_height, getBodyPartScreenPosition());
+		bodypart_image->initialize(texture_path, bodypart_width, bodypart_height, getBodyPartScreenPosition());
 		bodypart_image->setOriginAtCentre();
 	}
 
@@ -158,7 +158,10 @@ namespace Player
 	{
 		return  previous_direction;
 	}
-
+	void BodyPart::setColor(sf::Color color)
+	 {
+		bodypart_image->setColor(color);
+	 }
 
 	void BodyPart::destroy()
 	{

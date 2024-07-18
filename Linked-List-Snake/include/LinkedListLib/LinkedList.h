@@ -19,7 +19,8 @@ namespace LinkedListLib
 
 		float node_width;
 		float node_height;
-
+		sf::Color snake_color;
+		sf::String texture_path;
 		sf::Vector2i default_position;
 		Direction default_direction;
 
@@ -37,7 +38,7 @@ namespace LinkedListLib
 		LinkedList();
 		virtual ~LinkedList();
 
-		void initialize(float width, float height, sf::Vector2i position, Direction direction);
+		void initialize(sf::String path,float width, float height, sf::Vector2i position, Direction direction,sf::Color color);
 		void render();
 
 		virtual void insertNodeAtTail() = 0;

@@ -8,6 +8,8 @@ namespace Player
 	class BodyPart
 	{
 	protected:
+
+		sf::String texture_path;
 		UI::UIElement::ImageView* bodypart_image;
 
 		sf::Vector2i grid_position;
@@ -30,10 +32,11 @@ namespace Player
 		void destroy();
 
 	public:
+		
 		BodyPart();
 		~BodyPart();
 
-		void initialize(float width, float height, sf::Vector2i pos, Direction dir);
+		void initialize(sf::String path,float width, float height, sf::Vector2i pos, Direction dir);
 		void updatePosition();
 		void render();
 
@@ -43,6 +46,7 @@ namespace Player
 		sf::Vector2i getPosition();
 		sf::Vector2i getNextPosition();
 		sf::Vector2i getPrevPosition();
+		void setColor(sf::Color color);
 		Direction getPreviousDirection();
 	};
 }

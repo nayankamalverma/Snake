@@ -11,13 +11,15 @@ namespace LinkedListLib
 
     LinkedList::~LinkedList() = default;
 
-    void LinkedList::initialize(float width, float height, sf::Vector2i position, Direction direction)
+    void LinkedList::initialize(sf::String path, float width, float height, sf::Vector2i position, Direction direction, sf::Color color)
     {
         node_width = width;
         node_height = height;
         default_position = position;
         default_direction = direction;
         linked_list_size = 0;
+        snake_color = color;
+        texture_path = path;
     }
 
     void LinkedList::render()
@@ -59,13 +61,14 @@ namespace LinkedListLib
     {
         if (reference_node == nullptr)
         {
-            new_node->body_part.initialize(node_width, node_height, default_position, default_direction);
+            new_node->body_part.initialize(texture_path,node_width, node_height, default_position, default_direction);
+            new_node->body_part.setColor(snake_color);
             return;
         }
 
         sf::Vector2i position = getNewNodePosition(reference_node, operation);
 
-        new_node->body_part.initialize(node_width, node_height, position, reference_node->body_part.getDirection());
+        new_node->body_part.initialize(texture_path,node_width, node_height, position, reference_node->body_part.getDirection());
     }
 
     bool LinkedList::processNodeCollision()

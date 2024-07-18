@@ -4,6 +4,7 @@
 #include "Event/EventService.h"
 #include "Element/ElementService.h"
 #include "Food/FoodService.h"
+#include "Global/Config.h"
 #include "LinkedListLib/SingleLinked/SingleLinkedList.h"
 #include "LinkedListLib/DoubleLinked/DoubleLinkedList.h"
 
@@ -51,7 +52,7 @@ namespace Player
 		float height = ServiceLocator::getInstance()->getLevelService()->getCellHeight();
 
 		reset();
-		linked_list->initialize(width, height, default_position, default_direction);
+		linked_list->initialize(Config::snake_body_texture_path ,width, height, default_position, default_direction,sf::Color::Green);
 	}
 
 	void SnakeController::initialize() { }
@@ -274,6 +275,7 @@ namespace Player
 
 	void SnakeController::reset()
 	{
+		printf("reset");
 		current_snake_state = SnakeState::ALIVE;
 		current_snake_direction = default_direction;
 
@@ -291,6 +293,7 @@ namespace Player
 	{
 		linked_list->removeAllNodes();
 		reset();
+
 		spawnSnake();
 	}
 

@@ -47,6 +47,11 @@ namespace UI
             image_sprite.setScale(scale_x, scale_y);
         }
 
+        void ImageView::setColor(sf::Color color)
+        {
+            image_sprite.setColor(color);
+        }
+
         void ImageView::setPosition(sf::Vector2f position)
         {
             image_sprite.setPosition(position);

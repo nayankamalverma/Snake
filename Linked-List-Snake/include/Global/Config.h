@@ -11,6 +11,7 @@ namespace Global
 		static const sf::String snake_text_path;
 		static const sf::String obstacle_texture_path;
 		static const sf::String snake_body_texture_path;
+		static const sf::String hunter_snake_body_texture_path;
 
 		static const sf::String apple_texture_path;
 		static const sf::String mango_texture_path;
