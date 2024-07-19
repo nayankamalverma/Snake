@@ -1,6 +1,8 @@
 ﻿#pragma once
 #include <vector>
 #include <SFML/System/Vector2.hpp>
+
+#include "ElementData.h"
 #include "LinkedListLib//Node.h"
 
 namespace Element
@@ -13,7 +15,7 @@ namespace Element
 	private:
 		std::vector<Obstacle*> obstacle_list;
 
-		void spawnObstacle(sf::Vector2i position, float cell_width, float cell_height);
+		void spawnObstacle(sf::Vector2i position, float cell_width, float cell_height, ElementType type);
 
 	public:
 		ElementService();
