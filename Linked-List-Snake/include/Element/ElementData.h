@@ -6,6 +6,7 @@ namespace Element
     enum class ElementType
     {
         OBSTACLE,
+        MOVING_OBSTACLE
     };
 
     struct ElementData

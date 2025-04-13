@@ -34,17 +34,24 @@ namespace Element
 			switch (element_data_list[i].element_type)
 			{
 			case ElementType::OBSTACLE:
-				spawnObstacle(element_data_list[i].position, cell_width, cell_height);
+				spawnObstacle(element_data_list[i].position, cell_width, cell_height,element_data_list[i].element_type);
+				break;
+			case ElementType::MOVING_OBSTACLE:
+				spawnObstacle(element_data_list[i].position, cell_width, cell_height, element_data_list[i].element_type);
+				for(int j=1;j<5;j++)
+				{
+					spawnObstacle({element_data_list[i].position.x+j,element_data_list[i].position.y}, cell_width, cell_height,ElementType::OBSTACLE);
+				}
 				break;
 			}
 		}
 	}
 								 
-	void ElementService::spawnObstacle(sf::Vector2i position, float cell_width, float cell_height)
+	void ElementService::spawnObstacle(sf::Vector2i position, float cell_width, float cell_height,ElementType type)
 	{
 		Obstacle* obstacle = new Obstacle();
 
-		obstacle->initialize(position, cell_width, cell_height);
+		obstacle->initialize(position, cell_width, cell_height,type);
 		obstacle_list.push_back(obstacle);
 	}
 
