@@ -95,11 +95,7 @@ namespace Level
 		ServiceLocator::getInstance()->getElementService()->spawnElements(element_data_list, cell_width, cell_height);
 	}
 
-	void LevelService::spawnFood()
-	{
-		float cell_width = level_controller->getCellWidth();
-		float cell_height = level_controller->getCellHeight();
-
+	void LevelService::spawnFood()	 {
 		ServiceLocator::getInstance()->getFoodService()->startFoodSpawning();
 	}
 

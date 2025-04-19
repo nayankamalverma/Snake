@@ -22,6 +22,7 @@ namespace Food
     	sf::Vector2f getFoodImagePosition();
 
     public:
+        static const int food_categories=3;
         static const int number_of_foods = 9;
 
         FoodItem();

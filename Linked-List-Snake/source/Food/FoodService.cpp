@@ -13,6 +13,7 @@ namespace Food
 	FoodService::FoodService() : random_engine(random_device())
 	{
 		current_food_item = nullptr;
+		no_of_food_spawn = 1;
 	}
 
 	FoodService::~FoodService()
@@ -77,6 +78,9 @@ namespace Food
 	void FoodService::spawnFood()
 	{
 		current_food_item = createFood(getValidSpawnPosition(), getRandomFoodType());
+		no_of_food_spawn++;
+		
+
 	}
 
 	sf::Vector2i FoodService::getValidSpawnPosition()
@@ -105,9 +109,12 @@ namespace Food
 
 	FoodType FoodService::getRandomFoodType()
 	{
-
-		std::uniform_int_distribution<int> distribution(0, FoodItem::number_of_foods - 1);
-
+		int min, max;
+		if (no_of_food_spawn % 5 == 0) {min = 6; max = 8;}	  //special
+		else if (no_of_food_spawn % 2 == 1)  {min = 3; max = 5;}	//gainer
+		else { min = 0; max = 2; }      //burner
+		
+		std::uniform_int_distribution<int> distribution(min, max);
 		return static_cast<FoodType>(distribution(random_engine));
 	}
 
@@ -133,7 +140,7 @@ namespace Food
 
 	void FoodService::handleFoodSpawning()
 	{
-		if (ServiceLocator::getInstance()->getPlayerService()->isPlayerDead()) return;
+		if (ServiceLocator::getInstance()->getPlayerService()->isPlayerDead()) { no_of_food_spawn = 1; return; }
 
 		if (elapsed_duration >= spawn_duration)
 		{

@@ -19,7 +19,7 @@ namespace Food
 	{
 	private:
 		const float spawn_duration = 4.f;
-
+		int no_of_food_spawn;
 		float elapsed_duration;
 
 		FoodSpawningStatus current_spawning_status;
